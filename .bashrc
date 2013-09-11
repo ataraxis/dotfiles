@@ -14,6 +14,7 @@ alias less='less -Fi'
 
 set bell-style visual
 shopt -s histappend
+shopt -s globstar
 
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
