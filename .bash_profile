@@ -24,4 +24,4 @@ if [ -e "$rebel_jar" ]; then
 fi
 
 export MK_HOME=/var/lib/minutekey
-
+export AGENT_HOME=/var/lib/agent
