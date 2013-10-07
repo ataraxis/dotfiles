@@ -9,6 +9,7 @@ set nocompatible          " Who cares about VI compatability
 set laststatus=2          " Always show the statusline
 set encoding=utf-8        " Necessary to show Unicode glyphs
 set rnu                   " Relative line numbers rock
+set number                " 'Hybrid' line number mode
 set tabstop=2
 set softtabstop=2
 set expandtab
