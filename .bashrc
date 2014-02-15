@@ -8,9 +8,9 @@ fi
 # User specific aliases and functions
 
 export EDITOR=vim
-export PAGER="less -Fi"
+export PAGER="less -FXi"
 
-alias less='less -Fi'
+alias less='less -i'
 
 set bell-style visual
 shopt -s histappend

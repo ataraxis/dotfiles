@@ -9,7 +9,7 @@
 [branch]
 	autosetuprebase = always
 [core]
-	pager = less -Fi
+	pager = less -FXi
 [color]
 	ui = true
 [push]
