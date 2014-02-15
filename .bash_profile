@@ -7,12 +7,11 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:/sbin:/usr/sbin
 
 export PATH
 
 
-export JAVA_HOME=/usr/java/default
 export REBEL_HOME=/opt/jrebel
 
 rebel_jar=$REBEL_HOME/jrebel.jar
@@ -23,5 +22,9 @@ if [ -e "$rebel_jar" ]; then
     SBT_OPTS="$SBT_OPTS -Drebel.license=$rebel_license -noverify -javaagent:$rebel_jar -Drebel.lift_plugin=true"
 fi
 
-export MK_HOME=/var/lib/minutekey
-export AGENT_HOME=/var/lib/agent
+export AGENT_HOME=~/agent
+export KIOSK_NUMBER=1337
+
+export VAGRANT_DEFAULT_PROVIDER=lxc
+
+export MAN_POSIXLY_CORRECT=1
