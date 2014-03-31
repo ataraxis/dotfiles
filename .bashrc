@@ -11,6 +11,9 @@ export EDITOR=vim
 export PAGER="less -FXi"
 
 alias less='less -i'
+alias ls="ls --color"
+
+eval "$(dircolors ~/.dircolors)"
 
 set bell-style visual
 shopt -s histappend
