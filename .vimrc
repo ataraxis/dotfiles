@@ -22,6 +22,8 @@ set t_Co=256
 set background=dark
 colorscheme desert
 
+let mapleader=","
+
 
 " Enable fancy symbols in Powerline
 set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline:h14
