@@ -1,11 +1,25 @@
+set nocompatible          " Be iMproved
+filetype off
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-call pathogen#infect()
-syntax on
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'kien/ctrlp.vim'
+"Bundle 'altercation/vim-colors-solarized'
+
 filetype plugin indent on
 
 
-set nocompatible          " Who cares about VI compatability
+syntax on
+
 set laststatus=2          " Always show the statusline
 set encoding=utf-8        " Necessary to show Unicode glyphs
 set rnu                   " Relative line numbers rock
@@ -17,6 +31,10 @@ set incsearch             " Incremental search
 set ignorecase            " Ignore case in search ...
 set smartcase             "  unless upper case chars occur in search string
 set bs=indent,eol,start
+
+" Search by filename (not full path) by default
+let g:ctrlp_by_filename = 1
+set wildignore+=*/target/*,*.jar
 
 set t_Co=256
 set background=dark

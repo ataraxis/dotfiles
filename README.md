@@ -4,5 +4,5 @@ My dotfiles for Linux.
 
 ```terminal
 git clone --recursive git@github.com:ataraxis/dotfiles.git ~
-echo '*' > ~/.git/info/exclude
+~/bin/install-dotfiles
 ```
