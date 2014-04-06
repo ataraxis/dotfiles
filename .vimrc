@@ -13,7 +13,17 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'altercation/vim-colors-solarized'
+
+Bundle 'BusyBee'
+Bundle 'darkburn'
+Bundle 'darktango.vim'
+Bundle 'jellybeans.vim'
+Bundle 'twilight'
+Bundle 'Zmrok'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'cocopon/iceberg.vim'
+Bundle 'croaker/mustang-vim'
+Bundle 'gregsexton/Muon'
 
 filetype plugin indent on
 
@@ -31,6 +41,8 @@ set incsearch             " Incremental search
 set ignorecase            " Ignore case in search ...
 set smartcase             "  unless upper case chars occur in search string
 set bs=indent,eol,start
+set nomousehide
+set guioptions-=T
 
 " Search by filename (not full path) by default
 let g:ctrlp_by_filename = 1
@@ -38,10 +50,11 @@ set wildignore+=*/target/*,*.jar
 
 set t_Co=256
 set background=dark
-colorscheme desert
+colorscheme Tomorrow-Night
 
 let mapleader=","
 
+inoremap <C-Space> <C-x><C-o>
 
 " Enable fancy symbols in Powerline
 set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline:h14
