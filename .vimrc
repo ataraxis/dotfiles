@@ -13,6 +13,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'kien/ctrlp.vim'
+Bundle 'argtextobj.vim'
 
 Bundle 'BusyBee'
 Bundle 'darkburn'
@@ -41,16 +42,21 @@ set incsearch             " Incremental search
 set ignorecase            " Ignore case in search ...
 set smartcase             "  unless upper case chars occur in search string
 set bs=indent,eol,start
-set nomousehide
-set guioptions-=T
 
 " Search by filename (not full path) by default
 let g:ctrlp_by_filename = 1
-set wildignore+=*/target/*,*.jar
+set wildignore+=*/target/*,*.class,*.jar
 
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night
+
+if has('gui_running')
+  set nomousehide
+  set guioptions-=T
+  colorscheme Tomorrow-Night
+else
+  colorscheme desert
+endif
 
 let mapleader=","
 
