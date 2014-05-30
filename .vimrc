@@ -68,6 +68,9 @@ set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline:h14
 set gfn=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 11
 let g:Powerline_symbols = 'fancy'
 
+" Remove trailing whitespace
+autocmd FileType bash,c,coffee,css,java,html,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 " Auto-clean Fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
