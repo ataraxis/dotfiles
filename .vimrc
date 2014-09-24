@@ -49,13 +49,11 @@ set directory=$HOME/.vim/swap//
 
 set t_Co=256
 set background=dark
+colorscheme jellybeans
 
 if has('gui_running')
   set nomousehide
   set guioptions-=T
-  colorscheme Tomorrow-Night
-else
-  colorscheme desert
 endif
 
 let mapleader=","
