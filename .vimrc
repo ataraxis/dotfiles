@@ -16,6 +16,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'kien/ctrlp.vim'
 Bundle 'argtextobj.vim'
+Bundle 'mileszs/ack.vim'
 
 " Color schemes
 Bundle 'BusyBee'
@@ -28,6 +29,7 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'cocopon/iceberg.vim'
 Bundle 'croaker/mustang-vim'
 Bundle 'gregsexton/Muon'
+Bundle 'whatyouhide/vim-gotham'
 
 filetype plugin indent on
 
