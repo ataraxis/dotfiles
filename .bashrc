@@ -53,12 +53,18 @@ function _standard_prompt() {
     echo -n '\$\[\e[0m\] '
 }
 
+function _set_tmux_window_name() {
+    # set window name to current directory while no command is running
+    [ -n $TMUX ] && tmux rename-window $(basename $PWD)
+}
+
 function _prompt_command() {
-    PS1="`
+    PS1="$(
         exit_status=$?
         _git_prompt
         _standard_prompt $exit_status
-    `"
+        _set_tmux_window_name
+    )"
 }
 PROMPT_COMMAND=_prompt_command
 
@@ -70,5 +76,8 @@ if [[ $- = *i* ]] && which tmux 2>&1 >/dev/null; then
         source ~/.local_profile
         # create a session linked to session 0 if it exists, otherwise create session 0
         tmux -2 new-session -t 0 \; set-option destroy-unattached || tmux -2 new-session
+    else
+        # set window name to currently running command for long commands
+        trap 'tmux set-window-option automatic-rename "on" 1>/dev/null' DEBUG
     fi
 fi
