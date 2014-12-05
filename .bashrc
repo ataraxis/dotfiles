@@ -55,7 +55,7 @@ function _standard_prompt() {
 
 function _set_tmux_window_name() {
     # set window name to current directory while no command is running
-    [ -n $TMUX ] && tmux rename-window $(basename $PWD)
+    [ -n $TMUX ] && tmux rename-window "$(basename "$PWD")"
 }
 
 function _prompt_command() {
