@@ -63,7 +63,16 @@ if has('gui_running')
   set guioptions-=T
 endif
 
-let mapleader=","
+let mapleader = "\<Space>"
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 inoremap <C-Space> <C-x><C-o>
 
