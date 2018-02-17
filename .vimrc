@@ -1,47 +1,48 @@
 set nocompatible          " Be iMproved
-filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
 
-" Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-vinegar'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-abolish'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'kien/ctrlp.vim'
-Bundle 'argtextobj.vim'
-Bundle 'mileszs/ack.vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
+"Plug 'Lokaltog/vim-powerline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'derekwyatt/vim-scala'
+Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'mileszs/ack.vim'
+"Plug 'ensime/ensime-vim'
 
 " Color schemes
-Bundle 'BusyBee'
-Bundle 'darkburn'
-Bundle 'darktango.vim'
-Bundle 'jellybeans.vim'
-Bundle 'twilight'
-Bundle 'Zmrok'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'cocopon/iceberg.vim'
-Bundle 'croaker/mustang-vim'
-Bundle 'gregsexton/Muon'
-Bundle 'whatyouhide/vim-gotham'
+Plug 'vim-scripts/BusyBee'
+Plug 'vim-scripts/darkburn'
+Plug 'vim-scripts/darktango.vim'
+Plug 'vim-scripts/jellybeans.vim'
+Plug 'vim-scripts/twilight'
+Plug 'vim-scripts/Zmrok'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'cocopon/iceberg.vim'
+Plug 'croaker/mustang-vim'
+Plug 'gregsexton/Muon'
+Plug 'whatyouhide/vim-gotham'
+Plug 'fcpg/vim-fahrenheit'
 
-filetype plugin indent on
-
-
-syntax on
+call plug#end()
 
 set encoding=utf-8        " One encoding to rule them all
 set rnu                   " Relative line numbers rock
 set number                " 'Hybrid' line number mode
 set ignorecase            " Ignore case in search ...
 set smartcase             "  unless upper case chars occur in search string
+set showmatch             " Highlight matching [{()}]
+set incsearch             " Search as characters are entered
+set hlsearch              " Highlight search matches
 
 " Tab width of 2 in scala, js and coffee; 4 in everything else
 set expandtab
@@ -63,10 +64,16 @@ if has('gui_running')
   set guioptions-=T
 endif
 
+
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
 let mapleader = "\<Space>"
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <leader>l :nohlsearch<CR>
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -81,6 +88,7 @@ inoremap <C-Space> <C-x><C-o>
 set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline:h14
 set gfn=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 11
 let g:Powerline_symbols = 'fancy'
+"let g:airline_powerline_fonts = 1
 
 " Remove trailing whitespace
 autocmd FileType bash,c,coffee,css,html,java,javascript,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -91,7 +99,11 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " Search by filename (not full path) by default
 let g:ctrlp_by_filename = 1
 set wildignore+=*/target/*,*.class,*.jar,*.log
+" Ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+" The Silver Searcher
+let g:ackprg = 'ag --vimgrep'
 
 " Map w!! to write file with sudo, when forgot to open with sudo.
 cmap w!! w !sudo tee % >/dev/null
@@ -103,6 +115,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 
 " Set tab label to current directory
 "function! GuiTabLabel()

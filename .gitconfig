@@ -5,7 +5,7 @@
 	branch-name = !git for-each-ref --format=\"%(refname:short)\" `git symbolic-ref HEAD`
 	review = !git pull --rebase && git push origin HEAD:refs/for/`git branch-name`
 	tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	my-recent = !git log --pretty=format:'%Cgreen%ad %C(red)%h%Creset - %s' --date=short --reverse --all --since=2.months.ago --author=dux
+	my-recent = !git log --pretty=format:'%Cgreen%ad %C(red)%h%Creset - %s' --date=short --reverse --all --since=3.months.ago --author=dux
 [branch]
 	autosetuprebase = always
 [core]

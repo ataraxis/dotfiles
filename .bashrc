@@ -5,6 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+
 # User specific aliases and functions
 
 export EDITOR=vim
@@ -12,12 +15,14 @@ export PAGER="less -FXi"
 
 alias less='less -i'
 alias ls="ls --color"
+alias cb="xclip -selection clipboard"
 
 eval "$(dircolors ~/.dircolors)"
 
 set bell-style visual
 shopt -s histappend
 shopt -s globstar
+
 
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"

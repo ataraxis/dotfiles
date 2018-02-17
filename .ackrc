@@ -1,1 +1,3 @@
 --ignore-dir=target
+--ignore-dir=.ensime_cache
+--ignore-dir=log

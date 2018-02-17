@@ -19,7 +19,7 @@ export SBT_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,addres
 export AGENT_HOME=~/agent
 export KIOSK_NUMBER=1337
 
-export VAGRANT_DEFAULT_PROVIDER=lxc
+export VAGRANT_DEFAULT_PROVIDER=docker
 
 export MAN_POSIXLY_CORRECT=1
 
