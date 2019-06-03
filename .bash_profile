@@ -14,8 +14,6 @@ fi
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:/sbin:/usr/sbin
 export PATH
 
-export SBT_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
-
 export AGENT_HOME=~/agent
 export KIOSK_NUMBER=1337
 
@@ -23,4 +21,4 @@ export VAGRANT_DEFAULT_PROVIDER=docker
 
 export MAN_POSIXLY_CORRECT=1
 
-export DISPLAY=:0
+export NVIM_GTK_NO_WINDOW_DECORATION=1
