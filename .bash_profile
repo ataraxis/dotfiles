@@ -16,6 +16,7 @@ export PATH
 
 export AGENT_HOME=~/agent
 export KIOSK_NUMBER=K11001
+export WORKSPACE=dux
 
 export VAGRANT_DEFAULT_PROVIDER=docker
 
@@ -40,3 +41,8 @@ complete -F _awsume awsume
 
 #AWSume alias to source the AWSume script
 alias awsume="source awsume"
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/dux/.local/share/coursier/bin"
+# <<< coursier install directory <<<
+. "$HOME/.cargo/env"

@@ -5,9 +5,6 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-source /usr/share/fzf/key-bindings.bash
-source /usr/share/fzf/completion.bash
-
 # User specific aliases and functions
 
 export EDITOR=vim
@@ -86,3 +83,26 @@ if [[ $- = *i* ]] && which tmux 2>&1 >/dev/null; then
         trap 'tmux set-window-option automatic-rename "on" 1>/dev/null' DEBUG
     fi
 fi
+
+
+export PATH="~/.local/bin:$PATH"
+
+#AWSume alias to source the AWSume script
+alias awsume="source awsume"
+
+#Auto-Complete function for AWSume
+_awsume() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=$(awsume-autocomplete)
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _awsume awsume
+. "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

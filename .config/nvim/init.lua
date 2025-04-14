@@ -14,10 +14,10 @@ vim.opt_global.shortmess:remove("F")
 require('plugins')
 require('keymaps')
 
-require("github-theme").setup({
-  theme_style = "dark_default",
-  function_style = "italic",
-})
+--require("github-theme").setup({
+  --theme_style = "dark_default",
+  --function_style = "italic",
+--})
 
 require('lualine').setup {
   sections = {
