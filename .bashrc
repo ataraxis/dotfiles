@@ -70,17 +70,22 @@ function _prompt_command() {
 }
 PROMPT_COMMAND=_prompt_command
 
+source ~/.local_profile
 
 if [[ $- = *i* ]] && which tmux 2>&1 >/dev/null; then
     alias tmux="tmux -2"
     # if not inside a tmux session
     if [[ -z "$TMUX" ]]; then
-        source ~/.local_profile
-        # create a session linked to session 0 if it exists, otherwise create session 0
-        tmux -2 new-session -t 0 \; set-option destroy-unattached || tmux -2 new-session
+        # attach to existing session, or create new one
+        tmux -2 attach || tmux -2 new-session
     else
         # set window name to currently running command for long commands
-        trap 'tmux set-window-option automatic-rename "on" 1>/dev/null' DEBUG
+        # in claude session, use pane title instead of command
+        if [[ "$(tmux display-message -p '#{session_name}')" == "claude" ]]; then
+            trap 'tmux setw automatic-rename on; tmux setw automatic-rename-format "#{pane_title}" 1>/dev/null' DEBUG
+        else
+            trap 'tmux set-window-option automatic-rename "on" 1>/dev/null' DEBUG
+        fi
     fi
 fi
 
@@ -101,8 +106,12 @@ _awsume() {
     return 0
 }
 complete -F _awsume awsume
-. "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+

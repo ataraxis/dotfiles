@@ -6,12 +6,29 @@
 	review = !git pull --rebase && git push origin HEAD:refs/for/`git branch-name`
 	tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	my-recent = !git log --pretty=format:'%Cgreen%ad %C(red)%h%Creset - %s' --date=short --reverse --all --since=3.months.ago --author=dux
+	pclone = clone --filter=blob:limit=1m
 [branch]
 	autosetuprebase = always
 [core]
-	pager = less -FXi
+    pager = delta
 	autoclrf = --get
 [color]
 	ui = true
 [push]
 	default = simple
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+    conflictStyle = zdiff3
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

@@ -12,11 +12,13 @@ if [ -f ~/.local_profile ]; then
 fi
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:/sbin:/usr/sbin
+PATH="$PATH:/home/dux/.local/share/coursier/bin"
 export PATH
 
 export AGENT_HOME=~/agent
 export KIOSK_NUMBER=K11001
 export WORKSPACE=dux
+export SBT_OPTS="-Xmx2g -Xms1g"
 
 export VAGRANT_DEFAULT_PROVIDER=docker
 
@@ -41,8 +43,3 @@ complete -F _awsume awsume
 
 #AWSume alias to source the AWSume script
 alias awsume="source awsume"
-
-# >>> coursier install directory >>>
-export PATH="$PATH:/home/dux/.local/share/coursier/bin"
-# <<< coursier install directory <<<
-. "$HOME/.cargo/env"
